@@ -200,3 +200,4 @@ ul {
 }
 .info.top:hover .sx{margin-left: 40px;}
 .info.top:hover .dx{margin-left: 10px;}
+.info.top{cursor: pointer;}

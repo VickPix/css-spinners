@@ -27,7 +27,8 @@ $(function(){
   $(".spinners li:nth-child(1)").addClass("selected");
   update();
   $("#next").click(function(e){goToNext();});
-$("#prev").click(function(e){goToPrev();});
+  $("#prev").click(function(e){goToPrev();});
+  $('.info.top').click(function(e){location.href = 'https://github.com/VickPix/css-spinners';});//https://github.com/VickPix/css-spinners
   $("body").keyup(function(e){
     if(e.keyCode==39){goToNext();}else //right
       if(e.keyCode==37){goToPrev();}else //left
