@@ -31,6 +31,8 @@ ul {
 /**********************************************************************************/
 
 .vickpix{
+  width: 40px;
+  height: 40px;
   background-color: #222;
   border-radius: 5%;
   -webkit-animation: vickpixanim 2s infinite linear;
