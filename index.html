@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/spinners.css">
+  <title>Spinners</title>
+</head>
+<body>
+<div class="info top"><span class="sx">< </span><span class="center">source</span><span class="dx">/ ></span></div>  
+<a id="prev" class="navigation-arrow"><img src="./images/arrow.svg" alt="" width="28" height="42"></a>
+<ul class="spinners">
+  <li >
+    <div class="center-div pong">
+      <div class="bar1"></div>
+      <div class="ball"></div>
+      <div class="bar2"></div>
+    </div>
+  </li>
+  <li>
+    <div class="center-div vickpix"></div>
+  </li>
+</ul>
+<a id="next" class="navigation-arrow"><img src="./images/arrow.svg" alt="" width="28" height="42"></a> 
+<div class="info bottom">1/0</div>  
+<script type="text/javascript">
+$(function(){
+  $(".spinners li:nth-child(1)").addClass("selected");
+  update();
+  $("#next").click(function(e){goToNext();});
+$("#prev").click(function(e){goToPrev();});
+  $("body").keyup(function(e){
+    if(e.keyCode==39){goToNext();}else //right
+      if(e.keyCode==37){goToPrev();}else //left
+        if(e.keyCode==83){}else //"S" show source code
+          if(e.keyCode==27){dismissSourceFrame();}//escape
+        }
+    ).keydown(function(e){
+      if(e.keyCode==13){
+        showSourceForActiveSpinner();//"Enter" show source code
+      }
+    }
+  );
+  });
+
+function goToNext(){
+  console.log($(".spinners .selected").parent().index());
+  if($(".spinners .selected").index()+1>=$(".spinners li").length)return;//.parent()
+  //if($("#source-frame").hasClass("visible"))return;
+  $(".spinners .selected").removeClass("selected").next().addClass("selected");//.find("a")
+  update();
+}
+
+function goToPrev(){
+  console.log($(".spinners .selected").parent().index());
+  if($(".spinners .selected").index()<=0)return;
+  //if($("#source-frame").hasClass("visible"))return;
+  $(".spinners .selected").removeClass("selected").prev().addClass("selected");
+  update();
+}
+
+function update(){
+    var index=$(".spinners .selected").index(),classIndex=parseInt(index+1,10);
+    //$(".spinners .selected").removeClass("selected");
+    console.log($(".spinners .selected").index());
+    if(index+1>=$(".spinners li").length){
+      classIndex="Last";
+    }else if(index<=0) classIndex="First";
+    $("body").attr("class","active"+classIndex);
+    $('.info.bottom').html((index+1)+' / '+$(".spinners li").length);
+    //$(".spinners li:nth-child("+classIndex+")").addClass("selected");*/
+}
+</script> 
+</body>
+</html>
